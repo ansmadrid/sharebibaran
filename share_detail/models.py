@@ -17,6 +17,6 @@ class Share(models.Model):
         self.total_value = self.today_price * self.quantity
         return super().save(*args, **kwargs)
 
-    def balance(self, *args, **kwargs):
-        total = Share.objects.all().aggregate(Sum("total_value"))
+    def get_balance(self, *args, **kwargs):
+        total = Share.objects.all().aggregate(Sum("total_value"))["total_value__sum"]
         return total
