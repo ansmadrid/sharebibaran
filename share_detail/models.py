@@ -8,6 +8,6 @@ class Share(models.Model):
     sale_rate = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     sale_date = models.DateField(blank=True, null=True)
     today_price = models.DecimalField(max_digits=10, decimal_places=2,blank=True, null=True)
-    sold = models.BooleanField(blank=True, null=True)
+    sold = models.BooleanField(blank=True, null=True, default=False)
     profit_loss = models.DecimalField(max_digits=10, decimal_places=2,blank=True, null=True)
 
