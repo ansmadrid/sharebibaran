@@ -11,11 +11,11 @@ class ShareViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = ShareSerializer
 
-    def get_queryset(self):
-        sold = self.request.query_params.get("sold")
-        queryset = self.queryset
-        if sold == "true":
-            queryset = queryset.filter(sold = True)
-        if sold == "false":
-            queryset = queryset.filter(sold = False)
-        return queryset
+    # def get_queryset(self):
+    #     sold = self.request.query_params.get("sold")
+    #     queryset = self.queryset
+    #     if sold == "true":
+    #         queryset = queryset.filter(sold = True)
+    #     if sold == "false":
+    #         queryset = queryset.filter(sold = False)
+    #     return queryset
