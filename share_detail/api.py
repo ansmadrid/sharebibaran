@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from share_detail.models import Share
 from rest_framework import viewsets,permissions
 from .serializers import ShareSerializer
@@ -9,3 +10,12 @@ class ShareViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = ShareSerializer
+
+    def get_queryset(self, request):
+        sold = request.query_params.get("sold")
+        queryset = self.queryset
+        if sold == "true":
+            queryset = queryset.filter(sold = True)
+        if sold == "false":
+            queryset = queryset.filter(sold = False)
+        return queryset
