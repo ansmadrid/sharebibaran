@@ -13,10 +13,10 @@ class Share(models.Model):
     profit_loss = models.DecimalField(max_digits=10, decimal_places=2,blank=True, null=True)
     total_value = models.DecimalField(max_digits=20, decimal_places=2, default=0)
 
-    # def save(self, *args, **kwargs):
-    #     self.total_value = self.today_price * self.quantity
-    #     return super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        self.total_value = self.today_price * self.quantity
+        return super().save(*args, **kwargs)
 
-    # def get_balance(self, *args, **kwargs):
-    #     total = Share.objects.all().aggregate(Sum("total_value"))["total_value__sum"]
-    #     return total
+    def get_balance(self, *args, **kwargs):
+        total = Share.objects.all().aggregate(Sum("total_value"))["total_value__sum"]
+        return total
